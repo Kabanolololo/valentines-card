@@ -10,14 +10,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="card pixel-border" id="main-card">
-            <div id="speech-bubble">Ej! 😅</div>
+    <div id="speech-bubble">Ej! 😅</div>
 
+    <div class="container">
+        <div class="card" id="main-card">
             <div id="question-screen">
                 <div class="heart-pixel"></div>
                 <h1>Zostaniesz moja Walentynka?</h1>
                 <p>LEVEL 1: Wybierz madrze...</p>
+                    <div class="boss-bar">
+                        <span>BOSS HP</span>
+                        <div class="bar">
+                            <div class="hp" id="boss-hp"></div>
+                        </div>
+                    </div>
                 <div class="buttons">
                     <button id="yes-btn">TAK!</button>
                     <button id="no-btn">Nie</button>
@@ -29,7 +35,7 @@
                 <div class="gif-container">
                     <img src="cute.gif" alt="Hug">
                 </div>
-                <p>Wiedziałem! Do zobaczenia! ✨</p>
+                <p>Wiedzialem! Do zobaczenia! ✨</p>
             </div>
         </div>
     </div>
