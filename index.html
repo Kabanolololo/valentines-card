@@ -2,20 +2,22 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moja Walentynko?</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Moja Pixelowa Walentynka</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container" id="main-card">
-        <div class="card">
+    <div class="container">
+        <div class="card pixel-border" id="main-card">
+            <div id="speech-bubble">Ej! 😅</div>
+
             <div id="question-screen">
-                <div class="heart-icon">❤️</div>
+                <div class="heart-pixel"></div>
                 <h1>Zostaniesz moja Walentynka?</h1>
-                <p>Obiecuje duzo słodkosci i usmiechu!</p>
+                <p>LEVEL 1: Wybierz madrze...</p>
                 <div class="buttons">
                     <button id="yes-btn">TAK!</button>
                     <button id="no-btn">Nie</button>
@@ -23,11 +25,11 @@
             </div>
 
             <div id="success-screen" class="hidden">
-                <h1>Jejjj! ❤️</h1>
-                <p>Wiedzialem, ze sie zgodzisz!!</p>
+                <h1>LEVEL COMPLETE! ❤️</h1>
                 <div class="gif-container">
-                    <img src="cute.gif" alt="Przytulanie">
+                    <img src="cute.gif" alt="Hug">
                 </div>
+                <p>Wiedziałem! Do zobaczenia! ✨</p>
             </div>
         </div>
     </div>

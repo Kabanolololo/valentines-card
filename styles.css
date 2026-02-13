@@ -1,175 +1,150 @@
-/* Import czcionki, jeśli nie zadziałał w HTML */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --pixel-pink: #ff758f;
     --pixel-red: #ff4d6d;
-    --pixel-dark: #2c0b11;
-    --pixel-bg: #ffeef2;
-    --border-size: 4px;
+    --pixel-pink: #ffb6c1;
+    --pixel-dark: #1a0f1b;
+    --bg-dark: #fa7e9b;
 }
 
 body {
     margin: 0;
+    padding: 0;
+    width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fa7e9b;
+    background-color: #ff91ab;
     font-family: 'Press Start 2P', cursive;
     overflow: hidden;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffb6c1' d='M4 0h8v2H4zM2 2h12v2H2zM0 4h16v4H0zM2 8h12v2H2zM4 10h8v2H4zM6 12h4v2H6zM8 14h0v2H8z'/%3E%3C/svg%3E");
-    background-size: 32px 32px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='%23ffb6c1' d='M1 2h1v-1h2v1h1v-1h2v1h1v2h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1z'/%3E%3C/svg%3E");
+    background-size: 30px 30px;
     image-rendering: pixelated;
+    animation: backgroundScroll 20s linear infinite;
 }
 
-/* Główna karta */
+@keyframes backgroundScroll {
+    from { background-position: 0 0; }
+    to { background-position: 60px 60px; }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+/* Animacja pływającej kartki */
 .card {
-    background: white;
+    background: #fff5f7;
     padding: 2rem;
     text-align: center;
-    max-width: 450px;
-    width: 90%;
+    width: 100%;
+    max-width: 400px;
+    border: 6px solid var(--pixel-dark);
     position: relative;
-    border: var(--border-size) solid var(--pixel-dark);
-    border-radius: 0;
-    box-shadow: none;
-    
-    /* Tło wewnętrzne - pikselowa szachownica */
-    background-image: 
-        linear-gradient(45deg, #fff0f3 25%, transparent 25%), 
-        linear-gradient(-45deg, #fff0f3 25%, transparent 25%), 
-        linear-gradient(45deg, transparent 75%, #fff0f3 75%), 
-        linear-gradient(-45deg, transparent 75%, #fff0f3 75%);
-    background-size: 10px 10px;
-    background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+    animation: float 3s ease-in-out infinite;
 }
 
-/* Klasa tworząca grubą pikselową ramkę */
-.pixel-border {
-    border: var(--border-size) solid var(--pixel-dark);
-    box-shadow: 
-        inset 0 0 0 var(--border-size) var(--pixel-pink),
-        8px 8px 0px rgba(0,0,0,0.2);
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-h1 {
-    color: var(--pixel-red);
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    line-height: 1.5;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 0px var(--pixel-dark);
-}
-
-p {
+#speech-bubble {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 3px solid var(--pixel-dark);
+    padding: 8px 12px;
+    font-size: 0.5rem;
     color: var(--pixel-dark);
-    font-size: 0.7rem;
-    margin-bottom: 30px;
+    display: none;
+    white-space: nowrap;
+    z-index: 100;
 }
 
-/* Zastępujemy emoji div-em z tłem pixel art */
+#speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid var(--pixel-dark);
+}
+
 .heart-pixel {
     width: 50px;
     height: 50px;
     margin: 0 auto 20px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23ff4d6d' stroke='%232c0b11' stroke-width='1' d='M4 0h8v2H4zM2 2h12v2H2zM0 4h16v4H0zM2 8h12v2H2zM4 10h8v2H4zM6 12h4v2H6zM8 14h0v2H8z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23ff4d6d' stroke='%231a0f1b' stroke-width='0.5' d='M1 2h1v-1h2v1h1v-1h2v1h1v2h-1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1z'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
-    animation: pulse-pixel 1s steps(2) infinite;
+    animation: pulse 1s steps(2) infinite;
 }
 
-@keyframes pulse-pixel {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+h1 {
+    color: var(--pixel-red);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px white;
+}
+
+p {
+    font-size: 0.6rem;
+    color: var(--pixel-dark);
 }
 
 .buttons {
     margin-top: 30px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     min-height: 60px;
 }
 
-/* Stylizacja przycisków pikselowych */
 button {
-    padding: 15px 20px;
+    padding: 12px 15px;
     font-family: 'Press Start 2P', cursive;
     font-size: 0.7rem;
-    border-radius: 0;
-    border: var(--border-size) solid var(--pixel-dark);
+    border: 4px solid var(--pixel-dark);
     cursor: pointer;
-    transition: none; 
     text-transform: uppercase;
     position: relative;
 }
 
 #yes-btn {
-    background-color: var(--pixel-red);
+    background-color: #55cd5e;
     color: white;
-    box-shadow: inset -4px -4px 0px rgba(0,0,0,0.2), 4px 4px 0px var(--pixel-dark);
-}
-
-#yes-btn:hover {
-    background-color: var(--pixel-pink);
-    transform: translate(2px, 2px); /* Efekt wciskania */
-    box-shadow: inset -2px -2px 0px rgba(0,0,0,0.2), 2px 2px 0px var(--pixel-dark);
+    box-shadow: inset -4px -4px 0px rgba(0,0,0,0.2);
 }
 
 #no-btn {
-    background-color: #ccc;
-    color: var(--pixel-dark);
-    box-shadow: inset -4px -4px 0px rgba(0,0,0,0.2), 4px 4px 0px var(--pixel-dark);
-    z-index: 10;
-}
-
-.hidden {
-    display: none;
+    background-color: #e7e7e7;
+    color: #555;
+    z-index: 1000;
 }
 
 .gif-container img {
     width: 100%;
-    border-radius: 0;
-    margin: 20px 0;
-    border: var(--border-size) solid var(--pixel-dark);
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    border: 4px solid var(--pixel-dark);
+    margin: 15px 0;
 }
 
-.footer-text {
-    font-size: 0.6rem;
-    margin-top: 20px;
-}
+.hidden { display: none; }
 
-/* Animacja znikania w stylu retro - mruganie */
-.fade-out {
-    animation: retro-disappear 0.5s steps(5) forwards;
-}
-
-@keyframes retro-disappear {
-    0% { opacity: 1; visibility: visible; }
-    20% { opacity: 0; }
-    40% { opacity: 1; }
-    60% { opacity: 0; }
-    80% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; pointer-events: none; scale: 0;}
-}
-
-/* --- RESPONSYWNOŚĆ DLA TELEFONÓW--- */
 @media (max-width: 480px) {
-    .card {
-        padding: 1rem 1rem;
-    }
-    
-    h1 {
-        font-size: 0.85rem;
-    }
-
-    button {
-        font-size: 0.6rem;
-        padding: 10px 8px;
-    }
+    h1 { font-size: 0.8rem; }
+    button { font-size: 0.6rem; }
 }
 
 @keyframes pulse {
